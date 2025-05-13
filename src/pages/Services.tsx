@@ -1,8 +1,10 @@
+
+import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   // Reset scroll position when component mounts
@@ -19,10 +21,27 @@ const Services = () => {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-primary">Services</span>
+              Amplify Your Brand with <span className="text-primary">Data-Driven</span> Influencer Campaigns
             </h1>
-            <p className="text-xl text-gray-600">
-              Innovative solutions designed to amplify your brand's voice and drive meaningful engagement.
+            <p className="text-xl text-gray-600 mb-8">
+              From Nano-Influencer UGC to Premium Talent Partnerships – We Deliver Results
+            </p>
+            <Button asChild size="lg">
+              <Link to="/contact">Book a Free Strategy Session</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Tailored Solutions Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Tailored Solutions for <span className="text-primary">Every Brand</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Whether you're scaling with authentic UGC or launching high-impact campaigns with top talent, we've got you covered.
             </p>
           </div>
         </div>
@@ -158,7 +177,7 @@ const Services = () => {
                 Let's discuss how our services can help you achieve your marketing goals and drive meaningful growth for your business.
               </p>
               <Button asChild size="lg">
-                <a href="/contact">Schedule a Consultation</a>
+                <Link to="/contact">Schedule a Consultation</Link>
               </Button>
             </div>
           </div>
