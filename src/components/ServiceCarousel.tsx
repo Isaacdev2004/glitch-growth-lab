@@ -10,15 +10,9 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Link } from "react-router-dom";
+import type { Service } from "@/data/services";
 
-interface ServiceInfo {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}
-
-const ServiceCarousel = ({ services }: { services: ServiceInfo[] }) => {
+const ServiceCarousel = ({ services }: { services: Service[] }) => {
   return (
     <section className="py-20 bg-secondary" id="service-carousel">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
