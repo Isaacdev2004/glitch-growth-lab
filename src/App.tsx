@@ -11,6 +11,8 @@ import FAQs from "./pages/FAQs";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import InfluencerNetwork from "./pages/InfluencerNetwork";
+import BrandAgency from "./pages/BrandAgency";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/influencer-network" element={<InfluencerNetwork />} />
+          <Route path="/brand-agency" element={<BrandAgency />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

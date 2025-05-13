@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -22,16 +23,16 @@ const HeroSection = () => {
             
             <div className="animate-fade-up-delay-1">
               <p className="text-lg md:text-xl text-gray-600 mb-8">
-                We're not just another influencer marketing agency. We disrupt, innovate, and create genuine connections that drive your brand to new heights.
+                Amplify Your Brand with Data-Driven Influencer Campaigns. From Nano-Influencer UGC to Premium Talent Partnerships – We Deliver Results.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-2">
-              <Button size="lg" className="px-8 py-6 text-lg">
-                Get Started
+              <Button size="lg" className="px-8 py-6 text-lg" asChild>
+                <Link to="/influencer-network">Influencer Network</Link>
               </Button>
-              <Button variant="outline" size="lg" className="px-8 py-6 text-lg">
-                Our Services
+              <Button variant="outline" size="lg" className="px-8 py-6 text-lg" asChild>
+                <Link to="/brand-agency">Brand/Agency</Link>
               </Button>
             </div>
           </div>
