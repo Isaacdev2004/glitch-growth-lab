@@ -3,117 +3,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { services } from "@/data/services";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   // Reset scroll position when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const services = [
-    {
-      id: "influencer-partnerships",
-      title: "Influencer Partnerships",
-      description: "Strategic collaborations between your brand and carefully selected influencers who align with your values and target audience.",
-      features: [
-        "Custom influencer selection based on brand alignment",
-        "Authentic content creation and storytelling",
-        "Strategic campaign planning and execution",
-        "Comprehensive performance tracking",
-        "Relationship management and nurturing"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-    },
-    {
-      id: "content-creation",
-      title: "Content Creation",
-      description: "Compelling, platform-optimized content that resonates with your target audience and drives engagement.",
-      features: [
-        "Platform-specific content strategies",
-        "Visual storytelling and brand narrative development",
-        "Video production and editing",
-        "Photography and graphic design",
-        "SEO-optimized content for maximum reach"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-        </svg>
-      ),
-    },
-    {
-      id: "campaign-strategy",
-      title: "Campaign Strategy",
-      description: "Comprehensive, data-driven campaign strategies that align with your business objectives and maximize ROI.",
-      features: [
-        "Market and competitor analysis",
-        "Target audience profiling",
-        "Campaign objective setting and KPI development",
-        "Multi-channel strategy planning",
-        "Budget optimization and allocation"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
-      id: "analytics-reporting",
-      title: "Analytics & Reporting",
-      description: "Comprehensive performance tracking and actionable insights to measure campaign impact and drive continuous improvement.",
-      features: [
-        "Real-time campaign monitoring",
-        "Custom performance dashboards",
-        "Engagement and conversion tracking",
-        "ROI analysis and optimization recommendations",
-        "Competitor benchmarking"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
-    {
-      id: "brand-development",
-      title: "Brand Development",
-      description: "Strategic brand positioning and identity development to help you stand out in a crowded market.",
-      features: [
-        "Brand strategy and positioning",
-        "Visual identity development",
-        "Brand voice and messaging guidelines",
-        "Brand story and narrative creation",
-        "Brand consistency across channels"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-    },
-    {
-      id: "crisis-management",
-      title: "Crisis Management",
-      description: "Swift and effective response strategies to protect your brand reputation during challenging situations.",
-      features: [
-        "Crisis prevention planning",
-        "Real-time monitoring and alerts",
-        "Response strategy development",
-        "Stakeholder communication management",
-        "Post-crisis reputation recovery"
-      ],
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      ),
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -124,56 +23,91 @@ const Services = () => {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-primary">Services</span>
+              Amplify Your Brand with <span className="text-primary">Data-Driven Influencer Campaigns</span>
             </h1>
-            <p className="text-xl text-gray-600">
-              Innovative solutions designed to amplify your brand's voice and drive meaningful engagement.
+            <p className="text-xl text-gray-600 mb-8">
+              From Nano-Influencer UGC to Premium Talent Partnerships – We Deliver Results
             </p>
+            <Button asChild size="lg" className="px-6 py-6 text-lg">
+              <Link to="/contact">
+                Book a Free Strategy Session <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
       
-      {/* Services Detail Section */}
+      {/* Tailored Solutions Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="space-y-32">
-            {services.map((service, index) => (
-              <div 
-                key={service.id}
-                id={service.id}
-                className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12`}
-              >
-                <div className="lg:w-1/2">
-                  <div className="bg-secondary rounded-2xl p-8 relative">
-                    <div className="absolute -top-8 -left-8 w-16 h-16 flex items-center justify-center bg-white rounded-xl shadow-md text-primary">
-                      {service.icon}
-                    </div>
-                    <div className="pt-8">
-                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                      <p className="text-gray-600 mb-6">{service.description}</p>
-                      <ul className="space-y-3">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <svg className="w-5 h-5 text-primary mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="lg:w-1/2">
-                  <div className="relative h-[300px] bg-gray-100 rounded-2xl flex items-center justify-center">
-                    <span className="text-3xl font-bold text-gray-300">{service.title}</span>
-                    <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/5 rounded-full"></div>
-                    <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Tailored Solutions for <span className="text-primary">Every Brand</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              Whether you're scaling with authentic UGC or launching high-impact campaigns with top talent, we've got you covered.
+            </p>
           </div>
+          
+          <Tabs defaultValue={services[0].id} className="w-full max-w-6xl mx-auto">
+            <TabsList className="flex flex-wrap justify-center mb-10 bg-transparent h-auto p-0 space-x-2 space-y-2 sm:space-y-0">
+              {services.map((service) => (
+                <TabsTrigger 
+                  key={service.id}
+                  value={service.id}
+                  className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-3 rounded-full border border-gray-200 shadow-sm"
+                >
+                  {service.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            
+            {services.map((service) => (
+              <TabsContent 
+                key={service.id} 
+                value={service.id}
+                className="mt-10 px-4"
+              >
+                <div className="flex flex-col lg:flex-row gap-12 items-start">
+                  <div className="lg:w-1/3">
+                    <div className="bg-secondary/50 p-8 rounded-2xl">
+                      <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl text-primary mb-6">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="lg:w-2/3">
+                    <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+                      <h4 className="text-xl font-semibold mb-6">Key Features</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {service.features.map((feature, index) => (
+                          <div key={index} className="flex items-start">
+                            <div className="flex-shrink-0 mt-1">
+                              <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
+                                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                              </div>
+                            </div>
+                            <p className="ml-3 text-gray-600">{feature}</p>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-8 pt-6 border-t border-gray-100">
+                        <Button asChild>
+                          <Link to="/contact">
+                            Get Started With {service.title} <ArrowRight className="ml-2 h-4 w-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </section>
       
@@ -263,7 +197,7 @@ const Services = () => {
                 Let's discuss how our services can help you achieve your marketing goals and drive meaningful growth for your business.
               </p>
               <Button asChild size="lg">
-                <a href="/contact">Schedule a Consultation</a>
+                <Link to="/contact">Schedule a Consultation</Link>
               </Button>
             </div>
           </div>
