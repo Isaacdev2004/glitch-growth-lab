@@ -22,7 +22,7 @@ export const services: Service[] = [
       "Comprehensive performance tracking",
       "Relationship management and nurturing"
     ],
-    icon: <Users className="w-12 h-12" />
+    icon: Users
   },
   {
     id: "content-creation",
@@ -35,7 +35,7 @@ export const services: Service[] = [
       "Photography and graphic design",
       "SEO-optimized content for maximum reach"
     ],
-    icon: <ArrowRight className="w-12 h-12" />
+    icon: ArrowRight
   },
   {
     id: "campaign-strategy",
@@ -48,7 +48,7 @@ export const services: Service[] = [
       "Multi-channel strategy planning",
       "Budget optimization and allocation"
     ],
-    icon: <BarChart className="w-12 h-12" />
+    icon: BarChart
   },
   {
     id: "analytics-reporting",
@@ -61,7 +61,7 @@ export const services: Service[] = [
       "ROI analysis and optimization recommendations",
       "Competitor benchmarking"
     ],
-    icon: <LayoutList className="w-12 h-12" />
+    icon: LayoutList
   },
   {
     id: "brand-development",
@@ -74,7 +74,7 @@ export const services: Service[] = [
       "Brand story and narrative creation",
       "Brand consistency across channels"
     ],
-    icon: <Briefcase className="w-12 h-12" />
+    icon: Briefcase
   },
   {
     id: "crisis-management",
@@ -87,6 +87,6 @@ export const services: Service[] = [
       "Stakeholder communication management",
       "Post-crisis reputation recovery"
     ],
-    icon: <Settings className="w-12 h-12" />
+    icon: Settings
   },
 ];
