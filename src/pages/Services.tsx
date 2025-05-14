@@ -1,18 +1,29 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { services } from "@/data/services";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { services } from "@/data/services";
 
 const Services = () => {
   // Reset scroll position when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Check if there's a hash in the URL and scroll to that element
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
   }, []);
+
+  const [activeService, setActiveService] = useState(0);
 
   return (
     <div className="min-h-screen">
@@ -23,91 +34,100 @@ const Services = () => {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Amplify Your Brand with <span className="text-primary">Data-Driven Influencer Campaigns</span>
+              Our <span className="text-primary">Services</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              From Nano-Influencer UGC to Premium Talent Partnerships – We Deliver Results
+            <p className="text-xl text-gray-600">
+              Innovative solutions designed to amplify your brand's voice and drive meaningful engagement.
             </p>
-            <Button asChild size="lg" className="px-6 py-6 text-lg">
-              <Link to="/contact">
-                Book a Free Strategy Session <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
       
-      {/* Tailored Solutions Section */}
-      <section className="py-20 bg-white">
+      {/* Services Slider Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Tailored Solutions for <span className="text-primary">Every Brand</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Whether you're scaling with authentic UGC or launching high-impact campaigns with top talent, we've got you covered.
-            </p>
+          {/* Service Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {services.map((service, index) => (
+              <button
+                key={service.id}
+                className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
+                  activeService === index 
+                    ? 'bg-primary text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveService(index)}
+              >
+                {service.title}
+              </button>
+            ))}
           </div>
           
-          <Tabs defaultValue={services[0].id} className="w-full max-w-6xl mx-auto">
-            <TabsList className="flex flex-wrap justify-center mb-10 bg-transparent h-auto p-0 space-x-2 space-y-2 sm:space-y-0">
-              {services.map((service) => (
-                <TabsTrigger 
-                  key={service.id}
-                  value={service.id}
-                  className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-3 rounded-full border border-gray-200 shadow-sm"
-                >
-                  {service.title}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            
-            {services.map((service) => (
-              <TabsContent 
-                key={service.id} 
-                value={service.id}
-                className="mt-10 px-4"
+          {/* Active Service Display */}
+          <div className="max-w-6xl mx-auto">
+            {services.map((service, index) => (
+              <div 
+                key={service.id}
+                id={service.id}
+                className={`transition-opacity duration-300 ${
+                  activeService === index ? 'block opacity-100' : 'hidden opacity-0'
+                }`}
               >
-                <div className="flex flex-col lg:flex-row gap-12 items-start">
-                  <div className="lg:w-1/3">
-                    <div className="bg-secondary/50 p-8 rounded-2xl">
-                      <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl text-primary mb-6">
-                        {service.icon}
+                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                  <div className="lg:w-1/2">
+                    <div className="relative h-[300px] bg-secondary/30 rounded-2xl flex items-center justify-center overflow-hidden">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-primary w-32 h-32">
+                          {service.icon}
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                      <p className="text-gray-600">{service.description}</p>
+                      <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/5 rounded-full"></div>
+                      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full"></div>
                     </div>
                   </div>
-                  
-                  <div className="lg:w-2/3">
-                    <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
-                      <h4 className="text-xl font-semibold mb-6">Key Features</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {service.features.map((feature, index) => (
-                          <div key={index} className="flex items-start">
-                            <div className="flex-shrink-0 mt-1">
-                              <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center">
-                                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                              </div>
-                            </div>
-                            <p className="ml-3 text-gray-600">{feature}</p>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className="mt-8 pt-6 border-t border-gray-100">
-                        <Button asChild>
-                          <Link to="/contact">
-                            Get Started With {service.title} <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
-                      </div>
+                  <div className="lg:w-1/2">
+                    <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
+                    <p className="text-gray-600 text-lg mb-6">{service.description}</p>
+                    <ul className="space-y-3 mb-8">
+                      {service.features?.map((feature, i) => (
+                        <li key={i} className="flex items-start">
+                          <svg className="w-5 h-5 text-primary mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex space-x-4">
+                      <Button asChild>
+                        <Link to="/contact">Request This Service</Link>
+                      </Button>
+                      <Button variant="outline" onClick={() => {
+                        const nextIndex = (activeService + 1) % services.length;
+                        setActiveService(nextIndex);
+                      }}>
+                        Next Service
+                      </Button>
                     </div>
                   </div>
                 </div>
-              </TabsContent>
+              </div>
             ))}
-          </Tabs>
+          </div>
+          
+          {/* Pagination Dots */}
+          <div className="flex justify-center mt-12">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveService(index)}
+                className={`w-3 h-3 mx-1 rounded-full transition-all ${
+                  activeService === index ? 'bg-primary scale-125' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to service ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
       
