@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { sendFormSubmission } from "@/utils/formSubmit";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters." }),
@@ -30,6 +31,7 @@ const formSchema = z.object({
 
 const InfluencerNetwork = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,13 +51,21 @@ const InfluencerNetwork = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest in joining our network. We'll be in touch soon!",
-    });
-    form.reset();
+    setIsSubmitting(true);
+    
+    const success = await sendFormSubmission(values, "Influencer Application");
+    
+    if (success) {
+      toast({
+        title: "Application Submitted!",
+        description: "Thank you for your interest in joining our network. We'll be in touch soon!",
+      });
+      form.reset();
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -275,7 +285,14 @@ const InfluencerNetwork = () => {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full">Submit Application</Button>
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
+                  </Button>
                 </form>
               </Form>
             </div>

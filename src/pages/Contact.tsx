@@ -1,14 +1,87 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { sendFormSubmission } from "@/utils/formSubmit";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   // Reset scroll position when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: "",
+    message: "",
+    privacy: false
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target as HTMLInputElement;
+    
+    if (type === "checkbox") {
+      setFormData(prev => ({
+        ...prev,
+        [name]: (e.target as HTMLInputElement).checked
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Form validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message || !formData.privacy) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields and accept the privacy policy.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    const success = await sendFormSubmission(
+      {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message
+      },
+      "Contact"
+    );
+    
+    if (success) {
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+        privacy: false
+      });
+    }
+    
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="min-h-screen">
@@ -65,11 +138,11 @@ const Contact = () => {
                       <div>
                         <h3 className="font-bold mb-1">Email Us</h3>
                         <p className="text-gray-600">
-                          <a href="mailto:info@influenceragency.com" className="hover:text-primary transition-colors">
-                            info@influenceragency.com
+                          <a href="mailto:hello@mediaglitch.com" className="hover:text-primary transition-colors">
+                            hello@mediaglitch.com
                           </a><br />
-                          <a href="mailto:support@influenceragency.com" className="hover:text-primary transition-colors">
-                            support@influenceragency.com
+                          <a href="mailto:hello@mediaglitch.com" className="hover:text-primary transition-colors">
+                            hello@mediaglitch.com
                           </a>
                         </p>
                       </div>
@@ -124,7 +197,7 @@ const Contact = () => {
               {/* Contact Form */}
               <div className="lg:w-2/3">
                 <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -133,6 +206,9 @@ const Contact = () => {
                       <input
                         type="text"
                         id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                         placeholder="Your full name"
                         required
@@ -146,6 +222,9 @@ const Contact = () => {
                       <input
                         type="email"
                         id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                         placeholder="your@email.com"
                         required
@@ -161,6 +240,9 @@ const Contact = () => {
                       <input
                         type="text"
                         id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                         placeholder="Your company name"
                       />
@@ -173,6 +255,9 @@ const Contact = () => {
                       <input
                         type="tel"
                         id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                         placeholder="Your phone number"
                       />
@@ -186,6 +271,9 @@ const Contact = () => {
                     <input
                       type="text"
                       id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                       placeholder="How can we help you?"
                       required
@@ -198,6 +286,9 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       rows={5}
                       className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition"
                       placeholder="Tell us about your project or inquiry..."
@@ -208,7 +299,10 @@ const Contact = () => {
                   <div className="flex items-start">
                     <input
                       id="privacy"
+                      name="privacy"
                       type="checkbox"
+                      checked={formData.privacy}
+                      onChange={handleChange}
                       className="h-5 w-5 text-primary border-gray-200 rounded focus:ring-primary"
                       required
                     />
@@ -222,8 +316,12 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <Button type="submit" size="lg">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      size="lg"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </div>
                 </form>

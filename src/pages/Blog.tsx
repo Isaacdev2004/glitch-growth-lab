@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,15 +12,46 @@ import {
   PaginationNext 
 } from "@/components/ui/pagination";
 import { Search, Calendar, Clock, Tag, User } from "lucide-react";
+import { sendFormSubmission } from "@/utils/formSubmit";
+import { useToast } from "@/hooks/use-toast";
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [searchQuery, setSearchQuery] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
   // Reset scroll position when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    const success = await sendFormSubmission(
+      { email: newsletterEmail }, 
+      "Newsletter Subscription"
+    );
+    
+    if (success) {
+      setNewsletterEmail("");
+    }
+    
+    setIsSubmitting(false);
+  };
 
   const blogPosts = [
     {
@@ -338,14 +368,22 @@ const Blog = () => {
             <p className="text-gray-600 text-lg mb-8">
               Stay updated with the latest insights, trends, and strategies in influencer marketing.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
                 placeholder="Your email address"
                 className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 required
               />
-              <Button type="submit" className="sm:flex-shrink-0">Subscribe</Button>
+              <Button 
+                type="submit" 
+                className="sm:flex-shrink-0"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
+              </Button>
             </form>
             <p className="mt-4 text-sm text-gray-500">
               We respect your privacy. Unsubscribe at any time.

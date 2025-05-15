@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Card, CardContent } from "@/components/ui/card";
+import { sendFormSubmission } from "@/utils/formSubmit";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -28,6 +29,7 @@ const formSchema = z.object({
 
 const BrandAgency = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,13 +43,21 @@ const BrandAgency = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    toast({
-      title: "Strategy Session Request Submitted!",
-      description: "Thank you for your interest. Our team will contact you shortly to schedule your free strategy session.",
-    });
-    form.reset();
+    setIsSubmitting(true);
+    
+    const success = await sendFormSubmission(values, "Strategy Session");
+    
+    if (success) {
+      toast({
+        title: "Strategy Session Request Submitted!",
+        description: "Thank you for your interest. Our team will contact you shortly to schedule your free strategy session.",
+      });
+      form.reset();
+    }
+    
+    setIsSubmitting(false);
   };
 
   const countries = [
@@ -221,7 +231,14 @@ const BrandAgency = () => {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full">Book Your Strategy Session</Button>
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Book Your Strategy Session"}
+                  </Button>
                 </form>
               </Form>
             </div>
