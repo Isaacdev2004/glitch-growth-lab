@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const AboutSection = () => {
   return (
@@ -9,12 +10,11 @@ const AboutSection = () => {
           <div className="md:w-1/2">
             <div className="relative">
               <div className="bg-secondary rounded-2xl h-[400px] relative z-10 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="block text-primary font-bold text-xl mb-2">About Us</span>
-                    <span className="block text-3xl font-bold">Image Placeholder</span>
-                  </div>
-                </div>
+                <img 
+                  src="/lovable-uploads/c64ee5e6-889d-4125-973d-105018c2a033.png" 
+                  alt="Farhan Malik - Founder & CEO" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-64 h-64 bg-primary/10 rounded-2xl -z-10"></div>
               <div className="absolute -top-4 -left-4 w-40 h-40 border-2 border-primary/30 rounded-xl -z-10"></div>
@@ -23,22 +23,24 @@ const AboutSection = () => {
           
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="text-primary">Disrupting</span> The Traditional Influencer Marketing
+              <span className="text-primary">Disrupting</span> Traditional Influencer Marketing
             </h2>
             
             <p className="text-gray-600 mb-6">
-              Founded on the principle of genuine connection and authentic engagement, our agency takes 
-              a different approach to influencer marketing. We see beyond the metrics and dive deep into 
+              Founded by Farhan Malik on the principle of genuine connection and authentic engagement, Media Glitch 
+              takes a different approach to influencer marketing. We see beyond the metrics and dive deep into 
               the relationships that power real brand growth.
             </p>
             
             <p className="text-gray-600 mb-8">
-              Our team consists of digital natives, creative thinkers, and strategic planners who understand 
-              the evolving landscape of social influence. We don't just match brands with influencers; we 
-              create movements that resonate with audiences and drive measurable results.
+              With a background in mechanical engineering and entrepreneurship, Farhan combines analytical precision 
+              with creative strategy to create influencer marketing campaigns that don't just generate buzz—they 
+              drive measurable results and foster lasting brand-audience relationships.
             </p>
             
-            <Button>Learn More About Us</Button>
+            <Button asChild>
+              <Link to="/about">Learn More About Us</Link>
+            </Button>
           </div>
         </div>
       </div>
