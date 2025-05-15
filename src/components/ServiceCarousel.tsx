@@ -38,14 +38,14 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
   }, [api]);
 
   return (
-    <section className="py-20 bg-secondary" id="service-carousel">
+    <section className="py-20 bg-secondary/20" id="service-carousel">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our <span className="text-primary">Services</span>
           </h2>
           <p className="text-gray-600 text-lg">
-            Discover how we can help your brand grow through strategic influencer marketing.
+            Tailored solutions to amplify your brand through strategic influencer marketing
           </p>
         </div>
 
@@ -72,7 +72,7 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
                       <p className="text-gray-600 mb-4">{service.description}</p>
                       {service.features && (
                         <ul className="space-y-2 mt-4">
-                          {service.features.slice(0, 2).map((feature, i) => (
+                          {service.features.slice(0, 3).map((feature, i) => (
                             <li key={i} className="flex items-start">
                               <svg className="w-5 h-5 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
@@ -104,14 +104,14 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className={`w-2 h-2 mx-1 rounded-full ${activeIndex === index ? 'bg-primary' : 'bg-gray-300'}`}
+              className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-primary scale-110' : 'bg-gray-300'}`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
         
         <div className="mt-12 text-center">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="px-8">
             <Link to="/services">View All Services</Link>
           </Button>
         </div>
