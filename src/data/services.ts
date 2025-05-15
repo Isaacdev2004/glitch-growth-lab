@@ -1,6 +1,7 @@
 
 import { ReactNode } from "react";
 import { Users, BarChart, ArrowRight, LayoutList, Briefcase, Settings } from "lucide-react";
+import React from "react"; // Import React to create elements
 
 // Define the service interface
 export interface Service {
@@ -11,10 +12,11 @@ export interface Service {
   icon: ReactNode;
 }
 
-// Function to create icon elements 
+// Function to create icon elements properly as React elements
 // We're using a function to avoid using JSX in a .ts file
-const createIcon = (Icon: any): ReactNode => {
-  return { type: Icon, props: { className: "w-12 h-12" } };
+const createIcon = (IconComponent: any): ReactNode => {
+  // Use React.createElement instead of JSX
+  return React.createElement(IconComponent, { className: "w-12 h-12" });
 };
 
 // Export the services data
