@@ -34,11 +34,16 @@ const Services = () => {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-primary">Services</span>
+              Amplify Your Brand with <span className="text-primary">Data-Driven Influencer Campaigns</span>
             </h1>
             <p className="text-xl text-gray-600">
-              Innovative solutions designed to amplify your brand's voice and drive meaningful engagement.
+              From Nano-Influencer UGC to Premium Talent Partnerships – We Deliver Results
             </p>
+            <div className="mt-8">
+              <Button size="lg" className="px-8 py-6 text-lg" asChild>
+                <Link to="/contact">Book a Free Strategy Session</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
