@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import InfluencerNetwork from "./pages/InfluencerNetwork";
 import BrandAgency from "./pages/BrandAgency";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/influencer-network" element={<InfluencerNetwork />} />
           <Route path="/brand-agency" element={<BrandAgency />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
