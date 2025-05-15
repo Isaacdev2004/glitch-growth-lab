@@ -35,9 +35,10 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
           }}
           className="w-full max-w-6xl mx-auto"
           onSelect={(api) => {
-            // Fixed: Get the current index from the carousel API
-            const currentIndex = api.selectedScrollSnap();
-            setActiveIndex(currentIndex);
+            if (api && typeof api.selectedScrollSnap === 'function') {
+              const currentIndex = api.selectedScrollSnap();
+              setActiveIndex(currentIndex);
+            }
           }}
         >
           <CarouselContent>
