@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { services } from "@/data/services";
 import ServicesSlideshow from "@/components/ServicesSlideshow";
+import DifferentiatorSection from "@/components/DifferentiatorSection";
 
 const Services = () => {
   // Reset scroll position when component mounts
@@ -51,6 +52,9 @@ const Services = () => {
       
       {/* Services Slideshow Section */}
       <ServicesSlideshow />
+      
+      {/* What Makes Us Different Section */}
+      <DifferentiatorSection />
       
       {/* Services Slider Section */}
       <section className="py-16 bg-white">
