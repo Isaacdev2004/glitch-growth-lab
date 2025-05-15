@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="inline-block mb-4">
               <span className="font-bold text-xl text-primary">
-                Influencer<span className="text-white">Agency</span>
+                Media<span className="text-white">Glitch</span>
               </span>
             </Link>
             <p className="text-gray-400 mb-6">
@@ -121,8 +122,8 @@ const Footer = () => {
                 <svg className="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
-                <a href="mailto:info@influenceragency.com" className="text-gray-400 hover:text-primary transition-colors">
-                  info@influenceragency.com
+                <a href="mailto:hello@mediaglitch.com" className="text-gray-400 hover:text-primary transition-colors">
+                  hello@mediaglitch.com
                 </a>
               </li>
               <li className="flex items-center">
@@ -140,7 +141,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Influencer Marketing Agency. All rights reserved.
+              © {new Date().getFullYear()} Media Glitch. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link to="/privacy" className="text-gray-500 text-sm hover:text-primary transition-colors">

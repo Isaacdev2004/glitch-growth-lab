@@ -78,7 +78,7 @@ const InfluencerNetwork = () => {
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold mb-4">Influencer Network</h1>
               <p className="text-xl text-gray-600">
-                Apply to join the Media Glitch for PAID marketing campaigns!
+                Apply to join Media Glitch for PAID marketing campaigns!
               </p>
             </div>
 

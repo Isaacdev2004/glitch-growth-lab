@@ -51,7 +51,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <span className="font-bold text-xl md:text-2xl text-primary">
-            Influencer<span className="text-white">Agency</span>
+            Media<span className="text-white">Glitch</span>
           </span>
         </Link>
 
