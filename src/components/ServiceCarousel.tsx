@@ -4,17 +4,38 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Link } from "react-router-dom";
 import type { Service } from "@/data/services";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ServiceCarousel = ({ services }: { services: Service[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const handleSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+    
+    // Get initial index
+    setActiveIndex(api.selectedScrollSnap());
+
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [api]);
 
   return (
     <section className="py-20 bg-secondary" id="service-carousel">
@@ -34,12 +55,7 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
             loop: true,
           }}
           className="w-full max-w-6xl mx-auto"
-          onSelect={(api) => {
-            if (api && typeof api.selectedScrollSnap === 'function') {
-              const currentIndex = api.selectedScrollSnap();
-              setActiveIndex(currentIndex);
-            }
-          }}
+          setApi={setApi}
         >
           <CarouselContent>
             {services.map((service, index) => (
@@ -87,15 +103,7 @@ const ServiceCarousel = ({ services }: { services: Service[] }) => {
           {services.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                const carousel = document.querySelector('[data-carousel="true"]');
-                if (carousel) {
-                  carousel.scrollTo({
-                    left: index * (carousel.clientWidth / 3),
-                    behavior: 'smooth'
-                  });
-                }
-              }}
+              onClick={() => api?.scrollTo(index)}
               className={`w-2 h-2 mx-1 rounded-full ${activeIndex === index ? 'bg-primary' : 'bg-gray-300'}`}
               aria-label={`Go to slide ${index + 1}`}
             />
