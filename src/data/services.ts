@@ -1,6 +1,6 @@
 
 import { ReactNode } from "react";
-import { Users, BarChart, ArrowRight, LayoutList, Briefcase, Settings } from "lucide-react";
+import { Users, BarChart, ArrowRight, MessageSquare, TrendingUp, UserCog } from "lucide-react";
 import React from "react"; // Import React to create elements
 
 // Define the service interface
@@ -22,81 +22,81 @@ const createIcon = (IconComponent: any): ReactNode => {
 // Export the services data
 export const services: Service[] = [
   {
-    id: "influencer-partnerships",
-    title: "Influencer Partnerships",
-    description: "Strategic collaborations between your brand and carefully selected influencers who align with your values and target audience.",
+    id: "end-to-end-campaign-management",
+    title: "End-to-End Campaign Management",
+    description: "Comprehensive campaign management from concept to execution, with full optimization and reporting.",
     features: [
-      "Custom influencer selection based on brand alignment",
-      "Authentic content creation and storytelling",
-      "Strategic campaign planning and execution",
-      "Comprehensive performance tracking",
-      "Relationship management and nurturing"
+      "Strategic campaign planning and objective setting",
+      "Creator selection and relationship management",
+      "Content review and approval process",
+      "Real-time performance tracking",
+      "Detailed post-campaign analysis and insights"
     ],
     icon: createIcon(Users)
   },
   {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "Compelling, platform-optimized content that resonates with your target audience and drives engagement.",
+    id: "premium-creator-collaborations",
+    title: "Premium Creator Collaborations",
+    description: "Strategic partnerships with high-impact creators and celebrities who can significantly amplify your brand message.",
     features: [
-      "Platform-specific content strategies",
-      "Visual storytelling and brand narrative development",
-      "Video production and editing",
-      "Photography and graphic design",
-      "SEO-optimized content for maximum reach"
+      "Access to exclusive talent network",
+      "Customized collaboration agreements",
+      "Professional content production support",
+      "Multi-platform promotion strategies",
+      "Brand integration and storytelling guidance"
+    ],
+    icon: createIcon(TrendingUp)
+  },
+  {
+    id: "ugc-nano-influencer-campaigns",
+    title: "UGC & Nano-Influencer Campaigns",
+    description: "Scalable campaigns leveraging authentic content from micro and nano creators with highly engaged audiences.",
+    features: [
+      "Large-scale creator recruitment",
+      "Content brief development and training",
+      "Mass deployment and coordination",
+      "Performance analytics across creators",
+      "Rights management for extended content usage"
     ],
     icon: createIcon(ArrowRight)
   },
   {
-    id: "campaign-strategy",
-    title: "Campaign Strategy",
-    description: "Comprehensive, data-driven campaign strategies that align with your business objectives and maximize ROI.",
+    id: "influencer-strategy",
+    title: "Influencer Strategy",
+    description: "Data-driven influencer marketing strategies tailored to your brand goals, audience, and industry landscape.",
     features: [
       "Market and competitor analysis",
-      "Target audience profiling",
-      "Campaign objective setting and KPI development",
-      "Multi-channel strategy planning",
-      "Budget optimization and allocation"
+      "Creator landscape mapping",
+      "Channel and platform recommendations",
+      "Content format and style guidelines",
+      "Budget allocation and ROI projections"
     ],
     icon: createIcon(BarChart)
   },
   {
-    id: "analytics-reporting",
-    title: "Analytics & Reporting",
-    description: "Comprehensive performance tracking and actionable insights to measure campaign impact and drive continuous improvement.",
+    id: "social-media-strategy",
+    title: "Social Media Strategy",
+    description: "Comprehensive social media strategies that align with your business objectives and maximize audience engagement.",
     features: [
-      "Real-time campaign monitoring",
-      "Custom performance dashboards",
-      "Engagement and conversion tracking",
-      "ROI analysis and optimization recommendations",
-      "Competitor benchmarking"
+      "Platform-specific content strategies",
+      "Community building and engagement plans",
+      "Content calendar development",
+      "Trend analysis and opportunity identification",
+      "Performance metrics and goal setting"
     ],
-    icon: createIcon(LayoutList)
+    icon: createIcon(MessageSquare)
   },
   {
-    id: "brand-development",
-    title: "Brand Development",
-    description: "Strategic brand positioning and identity development to help you stand out in a crowded market.",
+    id: "talent-management",
+    title: "Talent Management",
+    description: "Full-service management for creators and influencers looking to grow their presence and brand partnerships.",
     features: [
-      "Brand strategy and positioning",
-      "Visual identity development",
-      "Brand voice and messaging guidelines",
-      "Brand story and narrative creation",
-      "Brand consistency across channels"
+      "Career development and personal branding",
+      "Partnership negotiation and contract management",
+      "Content strategy and production support",
+      "Revenue stream diversification",
+      "Long-term growth planning"
     ],
-    icon: createIcon(Briefcase)
-  },
-  {
-    id: "crisis-management",
-    title: "Crisis Management",
-    description: "Swift and effective response strategies to protect your brand reputation during challenging situations.",
-    features: [
-      "Crisis prevention planning",
-      "Real-time monitoring and alerts",
-      "Response strategy development",
-      "Stakeholder communication management",
-      "Post-crisis reputation recovery"
-    ],
-    icon: createIcon(Settings)
+    icon: createIcon(UserCog)
   }
 ];
