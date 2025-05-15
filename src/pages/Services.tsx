@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -7,6 +6,8 @@ import { Link } from "react-router-dom";
 import { services } from "@/data/services";
 import ServicesSlideshow from "@/components/ServicesSlideshow";
 import DifferentiatorSection from "@/components/DifferentiatorSection";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { PhoneCall, Users, UserCheck, Rocket, ChartBar } from "lucide-react";
 
 const Services = () => {
   // Reset scroll position when component mounts
@@ -26,6 +27,34 @@ const Services = () => {
   }, []);
 
   const [activeService, setActiveService] = useState(0);
+
+  const processSteps = [
+    {
+      icon: <PhoneCall className="w-6 h-6" />,
+      title: "Discovery Call",
+      description: "We understand your brand goals, target audience, and expectations for influencer partnerships."
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Audience Analysis",
+      description: "We analyze your audience demographics and identify the right influencer categories for optimal reach."
+    },
+    {
+      icon: <UserCheck className="w-6 h-6" />,
+      title: "Influencer Matching",
+      description: "We handpick creators whose audience and content style aligns with your brand identity."
+    },
+    {
+      icon: <Rocket className="w-6 h-6" />,
+      title: "Campaign Launch",
+      description: "We manage all logistics, creative briefs, and coordinate content publishing schedules."
+    },
+    {
+      icon: <ChartBar className="w-6 h-6" />,
+      title: "Reporting & Optimization",
+      description: "We track performance metrics and provide insights for future campaign optimization."
+    }
+  ];
 
   return (
     <div className="min-h-screen">
@@ -144,76 +173,54 @@ const Services = () => {
         </div>
       </section>
       
-      {/* Process Section */}
+      {/* Process Section - Updated to "How It Works" Timeline */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="text-primary">Process</span>
+              How It <span className="text-primary">Works</span>
             </h2>
             <p className="text-gray-600 text-lg">
-              How we work with you to deliver exceptional results.
+              Our proven process delivers exceptional results for your influencer marketing campaigns.
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-12">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto">1</div>
-                </div>
-                <div className="md:w-3/4">
-                  <div className="bg-white p-6 rounded-xl shadow">
-                    <h3 className="text-xl font-bold mb-2">Discovery & Strategy</h3>
-                    <p className="text-gray-600">
-                      We begin by understanding your brand, goals, and target audience. From there, we develop a customized strategy aligned with your objectives.
+          {/* Horizontal Timeline */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Desktop Timeline Line */}
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2 z-10"></div>
+            
+            {/* Scrollable Timeline */}
+            <ScrollArea className="w-full pb-6" orientation="horizontal">
+              <div className="flex gap-4 md:gap-0 min-w-max px-2">
+                {processSteps.map((step, index) => (
+                  <div 
+                    key={index} 
+                    className="relative flex flex-col items-center w-[260px] px-4 md:px-0"
+                  >
+                    {/* Step Number Circle */}
+                    <div className="relative z-20 flex items-center justify-center w-16 h-16 mb-4 bg-white rounded-full shadow-lg border-2 border-primary">
+                      <span className="text-primary text-2xl font-bold">{index + 1}</span>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="mb-3 p-3 bg-primary/10 rounded-full">
+                      <div className="text-primary">
+                        {step.icon}
+                      </div>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-lg font-bold mb-2 text-center">{step.title}</h3>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 text-center text-sm">
+                      {step.description}
                     </p>
                   </div>
-                </div>
+                ))}
               </div>
-              
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto">2</div>
-                </div>
-                <div className="md:w-3/4">
-                  <div className="bg-white p-6 rounded-xl shadow">
-                    <h3 className="text-xl font-bold mb-2">Planning & Creation</h3>
-                    <p className="text-gray-600">
-                      We identify the right influencers, develop compelling content strategies, and plan campaign execution timelines.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto">3</div>
-                </div>
-                <div className="md:w-3/4">
-                  <div className="bg-white p-6 rounded-xl shadow">
-                    <h3 className="text-xl font-bold mb-2">Execution & Monitoring</h3>
-                    <p className="text-gray-600">
-                      We launch your campaign and closely monitor performance in real-time, making adjustments as needed to maximize impact.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto">4</div>
-                </div>
-                <div className="md:w-3/4">
-                  <div className="bg-white p-6 rounded-xl shadow">
-                    <h3 className="text-xl font-bold mb-2">Analysis & Optimization</h3>
-                    <p className="text-gray-600">
-                      We analyze campaign performance, provide detailed reports, and offer insights for future optimization and continued growth.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </ScrollArea>
           </div>
         </div>
       </section>
