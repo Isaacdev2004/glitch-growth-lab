@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,7 @@ const serviceSlides: ServiceSlide[] = [
     id: "campaign-management",
     title: "End-to-End Campaign Management",
     description: "We formulate creative campaigns that reinforce your brand strategy to drive reach, engagement and conversions.",
-    image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
+    image: "/lovable-uploads/72b8279e-ac3c-40e8-bd4b-91335b644a61.png"
   },
   {
     id: "premium-creators",
