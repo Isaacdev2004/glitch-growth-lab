@@ -20,7 +20,7 @@ const serviceSlides: ServiceSlide[] = [
     id: "premium-creators",
     title: "Premium Creator Collaborations",
     description: "Working with the best influencers around the globe to deliver top results and value to brands meeting all KPIs.",
-    image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
+    image: "/lovable-uploads/599e6f18-2223-4356-8077-ea425835ea20.png"
   },
   {
     id: "ugc-campaigns",
