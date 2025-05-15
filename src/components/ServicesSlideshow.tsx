@@ -26,7 +26,7 @@ const serviceSlides: ServiceSlide[] = [
     id: "ugc-campaigns",
     title: "UGC & Nano-Influencer Campaigns",
     description: "Scale your brand with authentic user-generated content and nano-influencers for maximum authenticity and engagement.",
-    image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
+    image: "/lovable-uploads/d1a58762-ca99-406b-b7a7-9ef359464e64.png"
   },
   {
     id: "influencer-strategy",
