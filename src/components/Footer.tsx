@@ -75,27 +75,32 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
-                  Influencer Partnerships
+                  End-to-End Campaign Management
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
-                  Content Creation
+                  Premium Creator Collaborations
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
-                  Campaign Strategy
+                  UGC & Nano-Influencer Campaigns
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
-                  Analytics & Reporting
+                  Influencer Strategy
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
-                  Brand Development
+                  Social Media Strategy
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-gray-400 hover:text-primary transition-colors">
+                  Talent Management
                 </Link>
               </li>
             </ul>
