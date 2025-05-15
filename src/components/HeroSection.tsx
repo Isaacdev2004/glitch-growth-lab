@@ -42,11 +42,8 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/20 to-blue-500/20"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 aspect-square border-2 border-primary rounded-full"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 aspect-square border-2 border-primary rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="font-bold text-xl md:text-3xl mb-2">Your Brand</div>
-                  <div className="text-primary font-bold text-lg">Amplified</div>
-                </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/4472301d-78bd-474d-a8eb-8997c9cee054.png')" }}>
+                {/* Background image is now applied via inline style */}
               </div>
             </div>
           </div>
