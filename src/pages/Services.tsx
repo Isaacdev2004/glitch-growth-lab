@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { services } from "@/data/services";
+import ServicesSlideshow from "@/components/ServicesSlideshow";
 
 const Services = () => {
   // Reset scroll position when component mounts
@@ -47,6 +48,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+      
+      {/* Services Slideshow Section */}
+      <ServicesSlideshow />
       
       {/* Services Slider Section */}
       <section className="py-16 bg-white">
