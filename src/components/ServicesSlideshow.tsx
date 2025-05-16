@@ -26,7 +26,7 @@ const serviceSlides: ServiceSlide[] = [{
   id: "influencer-strategy",
   title: "Influencer Strategy",
   description: "Develop a comprehensive influencer strategy tailored to your brand goals, target audience, and industry niche.",
-  image: "/lovable-uploads/52d641f6-e1bc-4614-a16d-90b7f339ace9.png"
+  image: "/lovable-uploads/fda1ffa0-9aa8-4d33-acb6-40152c7ecbd1.png"
 }, {
   id: "social-media-strategy",
   title: "Social Media Strategy",
