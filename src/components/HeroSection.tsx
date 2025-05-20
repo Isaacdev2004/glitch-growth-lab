@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-gray-100 pt-16">
+    <div className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-gray-100 pt-24 md:pt-28">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-[10%] right-[10%] w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         <div className="absolute bottom-[10%] left-[10%] w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
