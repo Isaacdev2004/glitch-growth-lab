@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -92,7 +91,7 @@ const Contact = () => {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Get in <span className="text-primary">Touch</span>
+              Get in <span className="animate-glitch text-primary" data-text="Touch">Touch</span>
             </h1>
             <p className="text-xl text-gray-600">
               We'd love to hear from you. Contact us for any inquiries or to discuss how we can help your brand grow.
