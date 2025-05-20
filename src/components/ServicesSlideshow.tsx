@@ -1,12 +1,15 @@
-import { useState } from "react";
+
+import { useState, useEffect, useRef, TouchEvent } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
 interface ServiceSlide {
   id: string;
   title: string;
   description: string;
   image: string;
 }
+
 const serviceSlides: ServiceSlide[] = [{
   id: "campaign-management",
   title: "End-to-End Campaign Management",
@@ -38,14 +41,48 @@ const serviceSlides: ServiceSlide[] = [{
   description: "Expert management of influencer relationships to ensure long-term partnerships and consistent brand messaging.",
   image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
 }];
+
 const ServicesSlideshow = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const slideRef = useRef<HTMLDivElement>(null);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
   const nextSlide = () => {
     setActiveSlide(prev => prev === serviceSlides.length - 1 ? 0 : prev + 1);
   };
+  
   const prevSlide = () => {
     setActiveSlide(prev => prev === 0 ? serviceSlides.length - 1 : prev - 1);
   };
+
+  // Touch event handlers
+  const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
   return <section className="py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
@@ -58,16 +95,19 @@ const ServicesSlideshow = () => {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          <div className="overflow-hidden rounded-2xl shadow-lg bg-secondary/10 mb-8">
+          <div 
+            className="overflow-hidden rounded-2xl shadow-lg bg-secondary/10 mb-8"
+            ref={slideRef}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <div className="relative min-h-[500px] md:min-h-[600px] w-full flex items-center">
               {/* Service Slides */}
               {serviceSlides.map((slide, index) => <div key={slide.id} className={`absolute inset-0 w-full h-full transition-opacity duration-500 flex flex-col md:flex-row ${activeSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
                   <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center">
                     <h3 className="text-2xl md:text-3xl font-bold mb-4">{slide.title}</h3>
                     <p className="text-gray-700 mb-6">{slide.description}</p>
-                    <Button variant="outline" className="self-start" asChild>
-                      <a href={`#${slide.id}`}>Learn More</a>
-                    </Button>
                   </div>
                   <div className="w-full md:w-1/2 p-6 md:p-12">
                     <div className="h-full rounded-xl overflow-hidden bg-white">
@@ -98,4 +138,5 @@ const ServicesSlideshow = () => {
       </div>
     </section>;
 };
+
 export default ServicesSlideshow;
