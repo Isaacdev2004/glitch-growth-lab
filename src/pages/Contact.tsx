@@ -330,17 +330,7 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* Map Section */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">Visit Our Office</h2>
-            <div className="bg-gray-200 rounded-xl h-[400px] flex items-center justify-center">
-              <p className="text-gray-500 font-medium">Map Placeholder</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Map Section has been removed as requested */}
       
       <Footer />
     </div>
