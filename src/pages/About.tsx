@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import AboutSection from "@/components/AboutSection";
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -145,7 +144,6 @@ const About = () => {
         </div>
       </section>
       
-      <AboutSection />
       <Footer />
     </div>
   );

@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -121,9 +122,7 @@ const Contact = () => {
                       <div>
                         <h3 className="font-bold mb-1">Our Office</h3>
                         <p className="text-gray-600">
-                          123 Marketing Street<br />
-                          Digital City, DC 45678<br />
-                          United States
+                          Prosper, TX USA
                         </p>
                       </div>
                     </div>
@@ -156,8 +155,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-bold mb-1">Call Us</h3>
                         <p className="text-gray-600">
-                          <a href="tel:+1234567890" className="hover:text-primary transition-colors">
-                            +1 (234) 567-890
+                          <a href="tel:+16822826277" className="hover:text-primary transition-colors">
+                            +1 682 282 6277
                           </a><br />
                           <span className="text-sm text-gray-500">Mon-Fri, 9am-6pm EST</span>
                         </p>
@@ -329,8 +328,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      
-      {/* Map Section has been removed as requested */}
       
       <Footer />
     </div>

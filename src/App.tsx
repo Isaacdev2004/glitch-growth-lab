@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import FAQs from "./pages/FAQs";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import InfluencerNetwork from "./pages/InfluencerNetwork";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/influencer-network" element={<InfluencerNetwork />} />
           <Route path="/brand-agency" element={<BrandAgency />} />
