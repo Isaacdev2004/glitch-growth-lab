@@ -9,11 +9,12 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <div className="relative">
-              <div className="bg-secondary rounded-2xl h-[400px] relative z-10 overflow-hidden">
+              <div className="bg-secondary rounded-2xl relative z-10 overflow-hidden">
+                {/* Removed fixed height and adjusted to maintain aspect ratio */}
                 <img 
                   src="/lovable-uploads/c64ee5e6-889d-4125-973d-105018c2a033.png" 
                   alt="Farhan Malik - Founder & CEO" 
-                  className="w-full h-full object-cover"
+                  className="w-full object-contain"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-64 h-64 bg-primary/10 rounded-2xl -z-10"></div>
