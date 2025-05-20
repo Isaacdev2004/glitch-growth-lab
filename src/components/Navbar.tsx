@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Instagram, Twitter, Facebook, Linkedin, Menu } from "lucide-react";
+import { Instagram, Linkedin, Menu } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,10 +33,8 @@ const Navbar = () => {
   ];
 
   const socialIcons = [
-    { icon: <Instagram size={18} />, href: "https://instagram.com" },
-    { icon: <Twitter size={18} />, href: "https://twitter.com" },
-    { icon: <Facebook size={18} />, href: "https://facebook.com" },
-    { icon: <Linkedin size={18} />, href: "https://linkedin.com" },
+    { icon: <Instagram size={18} />, href: "https://www.instagram.com/media_glitch/" },
+    { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/company/media-glitch0" },
   ];
 
   return (
