@@ -15,9 +15,9 @@ const HeroSection = () => {
           <div className="flex-1 lg:max-w-2xl">
             <div className="animate-fade-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                <span className="block">Glitching</span> 
+                <span className="block">Glitch</span> 
                 <span className="animate-glitch text-primary" data-text="The System">The System</span>
-                <span className="block">For Your Brand Growth</span>
+                <span className="block">Grow your brand</span>
               </h1>
             </div>
             
