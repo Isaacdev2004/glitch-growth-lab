@@ -34,12 +34,12 @@ const serviceSlides: ServiceSlide[] = [{
   id: "social-media-strategy",
   title: "Social Media Strategy",
   description: "Create a cohesive social media presence that complements your influencer campaigns for maximum impact.",
-  image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
+  image: "/lovable-uploads/52d641f6-e1bc-4614-a16d-90b7f339ace9.png"
 }, {
   id: "talent-management",
   title: "Talent Management",
   description: "Expert management of influencer relationships to ensure long-term partnerships and consistent brand messaging.",
-  image: "/lovable-uploads/ca07fe69-41d4-4a0c-bfbc-86aa847c8610.png"
+  image: "/lovable-uploads/4472301d-78bd-474d-a8eb-8997c9cee054.png"
 }];
 
 const ServicesSlideshow = () => {
