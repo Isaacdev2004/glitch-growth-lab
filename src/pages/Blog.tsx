@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -61,7 +62,7 @@ const Blog = () => {
       date: "May 8, 2025",
       readTime: "5 min read",
       category: "Strategy",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "Jane Smith",
       authorRole: "Founder & CEO"
     },
@@ -72,7 +73,7 @@ const Blog = () => {
       date: "May 2, 2025",
       readTime: "7 min read",
       category: "Analytics",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "David Williams",
       authorRole: "Analytics Lead"
     },
@@ -83,7 +84,7 @@ const Blog = () => {
       date: "April 25, 2025",
       readTime: "6 min read",
       category: "Partnerships",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "Sarah Johnson",
       authorRole: "Head of Partnerships"
     },
@@ -94,7 +95,7 @@ const Blog = () => {
       date: "April 18, 2025",
       readTime: "8 min read",
       category: "Innovation",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "Michael Chen",
       authorRole: "Creative Director"
     },
@@ -105,7 +106,7 @@ const Blog = () => {
       date: "April 10, 2025",
       readTime: "9 min read",
       category: "Strategy",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "Jane Smith",
       authorRole: "Founder & CEO"
     },
@@ -116,7 +117,7 @@ const Blog = () => {
       date: "April 3, 2025",
       readTime: "4 min read",
       category: "Compliance",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
       author: "David Williams",
       authorRole: "Analytics Lead"
     }
@@ -201,11 +202,15 @@ const Blog = () => {
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-gray-100 h-full min-h-[300px] relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img src={filteredPosts[0].image} alt={filteredPosts[0].title} className="w-24 h-24 opacity-30" />
+                  <div className="absolute inset-0">
+                    <img 
+                      src={filteredPosts[0].image} 
+                      alt={filteredPosts[0].title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-primary/80 text-white px-3 py-1 rounded-full text-sm font-medium">
                       {filteredPosts[0].category}
                     </span>
                   </div>
@@ -279,11 +284,13 @@ const Blog = () => {
               {filteredPosts.slice(1).map((post) => (
                 <article key={post.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 h-full flex flex-col">
                   <div className="h-48 bg-gray-100 relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <img src={post.image} alt={post.title} className="w-16 h-16 opacity-30" />
-                    </div>
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                    />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                      <span className="bg-primary/80 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                         <Tag size={14} className="mr-1" />
                         {post.category}
                       </span>
