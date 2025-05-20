@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -97,18 +98,54 @@ const Services = () => {
             </p>
           </div>
           
-          {/* Horizontal Timeline */}
-          <div className="relative max-w-6xl mx-auto">
-            {/* Desktop Timeline Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2 z-10"></div>
+          {/* Desktop Timeline - No Scrolling */}
+          <div className="hidden md:block relative max-w-6xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2 z-10"></div>
+            
+            {/* Steps Container */}
+            <div className="flex justify-between">
+              {processSteps.map((step, index) => (
+                <div 
+                  key={index} 
+                  className="relative flex flex-col items-center w-1/5 px-2"
+                >
+                  {/* Step Number Circle */}
+                  <div className="relative z-20 flex items-center justify-center w-14 h-14 mb-4 bg-white rounded-full shadow-lg border-2 border-primary">
+                    <span className="text-primary text-xl font-bold">{index + 1}</span>
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="mb-3 p-3 bg-primary/10 rounded-full">
+                    <div className="text-primary">
+                      {step.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-base font-bold mb-2 text-center">{step.title}</h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 text-center text-xs">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Mobile Timeline - Scrollable */}
+          <div className="md:hidden relative max-w-6xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2 z-10"></div>
             
             {/* Scrollable Timeline */}
             <ScrollArea className="w-full pb-6" orientation="horizontal">
-              <div className="flex gap-4 md:gap-0 min-w-max px-2">
+              <div className="flex gap-4 min-w-max px-2">
                 {processSteps.map((step, index) => (
                   <div 
                     key={index} 
-                    className="relative flex flex-col items-center w-[260px] px-4 md:px-0"
+                    className="relative flex flex-col items-center w-[260px] px-4"
                   >
                     {/* Step Number Circle */}
                     <div className="relative z-20 flex items-center justify-center w-16 h-16 mb-4 bg-white rounded-full shadow-lg border-2 border-primary">
