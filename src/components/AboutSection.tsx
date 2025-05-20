@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -10,11 +9,10 @@ const AboutSection = () => {
           <div className="md:w-1/2">
             <div className="relative">
               <div className="bg-secondary rounded-2xl relative z-10 overflow-hidden">
-                {/* Removed fixed height and adjusted to maintain aspect ratio */}
                 <img 
                   src="/lovable-uploads/c64ee5e6-889d-4125-973d-105018c2a033.png" 
                   alt="Farhan Malik - Founder & CEO" 
-                  className="w-full object-contain"
+                  className="w-full object-contain object-top"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-64 h-64 bg-primary/10 rounded-2xl -z-10"></div>
